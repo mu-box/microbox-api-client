@@ -5,10 +5,9 @@ import (
 	"time"
 )
 
-//
 type (
 
-	// Service represents a published nanobox service
+	// Service represents a published microbox service
 	Service struct {
 		ServiceConfig
 		CreatedAt time.Time `json:"created_at"`

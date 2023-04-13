@@ -1,12 +1,6 @@
-// Copyright (c) 2015 Pagoda Box Inc
-//
-// This Source Code Form is subject to the terms of the Mozilla Public License, v.
-// 2.0. If a copy of the MPL was not distributed with this file, You can obtain one
-// at http://mozilla.org/MPL/2.0/.
-//
 
 // package client consists of a core api client struct with methods broken into
-// related calls, for interacting and communicating with the nanobox API.
+// related calls, for interacting and communicating with the microbox API.
 package client
 
 //
@@ -21,15 +15,13 @@ import (
 	"net/http/httputil"
 )
 
-//
 const (
-	DefaultAPIURL      = "https://api.nanobox.io"
+	DefaultAPIURL      = "https://api.microbox.cloud"
 	DefaultAPIVersion  = "v1"
 	DefaultContentType = "application/json"
 	Version            = "0.1.1"
 )
 
-//
 var (
 	APIURL     string       // The URL to which the API client will make requests.
 	APIVersion string       // The version of the API to make requests to.
@@ -39,10 +31,9 @@ var (
 	UserSlug   string       // The UserSlug to use in conjunction with the AuthToken when making API requests. (username, email, or ID)
 )
 
-//
 type (
 
-	// APIError represents a pagoda-client error
+	// APIError represents a microbox-client error
 	APIError struct {
 		error         // The entire error (ex. {"error":"404 Not Found"})
 		Body   string `json:"error"` // The error body (ex. "Not Found")
@@ -57,7 +48,6 @@ type (
 	}
 )
 
-//
 func init() {
 	APIURL = DefaultAPIURL
 	APIVersion = DefaultAPIVersion
@@ -65,27 +55,27 @@ func init() {
 	HTTPClient = http.DefaultClient
 }
 
-// post handles standard POST operations to the nanobox API
+// post handles standard POST operations to the microbox API
 func post(v interface{}, path string, body interface{}) error {
 	return doAPIRequest(v, "POST", path, body)
 }
 
-// get handles standard GET operations to the nanobox API
+// get handles standard GET operations to the microbox API
 func get(v interface{}, path string) error {
 	return doAPIRequest(v, "GET", path, nil)
 }
 
-// patch handles standard PATH operations to the nanobox API
+// patch handles standard PATH operations to the microbox API
 func patch(v interface{}, path string, body interface{}) error {
 	return doAPIRequest(v, "PATCH", path, body)
 }
 
-// put handles standard PUT operations to the nanobox API
+// put handles standard PUT operations to the microbox API
 func put(v interface{}, path string, body interface{}) error {
 	return doAPIRequest(v, "PUT", path, body)
 }
 
-// delete handles standard DELETE operations to the nanobox API
+// delete handles standard DELETE operations to the microbox API
 func delete(path string) error {
 	return doAPIRequest(nil, "DELETE", path, nil)
 }
@@ -116,7 +106,7 @@ func DoRawRequest(v interface{}, method, path string, body interface{}, headers 
 	return Do(req, v)
 }
 
-// NewRequest creates an HTTP request for the nanobox API, but does not perform
+// NewRequest creates an HTTP request for the microbox API, but does not perform
 // it.
 func NewRequest(method, path string, body interface{}, headers map[string]string) (*http.Request, error) {
 

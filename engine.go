@@ -5,10 +5,9 @@ import (
 	"time"
 )
 
-//
 type (
 
-	// Engine represents a published nanobox engine
+	// Engine represents a published microbox engine
 	Engine struct {
 		EngineConfig
 		ActiveReleaseID string    `json:"active_release_id"`

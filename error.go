@@ -1,9 +1,3 @@
-// Copyright (c) 2015 Pagoda Box Inc
-//
-// This Source Code Form is subject to the terms of the Mozilla Public License, v.
-// 2.0. If a copy of the MPL was not distributed with this file, You can obtain one
-// at http://mozilla.org/MPL/2.0/.
-//
 
 package client
 
@@ -14,11 +8,11 @@ import (
 )
 
 // HandleError takes an error returned from an API call, break it down and
-// return important information regarding the error. The Pagoda Box API returns
+// return important information regarding the error. The Microbox API returns
 // custom errors in some instances that need to have very specific handlers.
 func HandleError(err error) error {
 
-	// if its a pagodabox.Error we have special things we want to do...
+	// if it's a micrbbox-api.Error we have special things we want to do...
 	if e, ok := err.(APIError); ok {
 
 		//

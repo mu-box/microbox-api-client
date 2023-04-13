@@ -5,10 +5,9 @@ import (
 	"time"
 )
 
-//
 type (
 
-	// EngineRelease represents a published nanobox engine release
+	// EngineRelease represents a published microbox engine release
 	EngineRelease struct {
 		EngineReleaseConfig
 		CreatedAt time.Time `json:"created_at"`
